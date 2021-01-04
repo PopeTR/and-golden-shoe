@@ -1,35 +1,68 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+  <div class="container-nav">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <%= image_tag "Golden-shoe-logo.png", alt: "navbar-logo", class: "navbar-logo"%>
+        </a>
+    </div>
+<%# burger button %>
+    <div class="burger">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="line" id="line-top"></div>
+        <div class="line" id="line-middle"></div>
+        <div class="line" id="line-bottom"></div>
+      </button>
+    </div>
+    <%# Navbar links %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto order-lg-1">
+        <div class="nav-links" id="nav-links">
+          <li class="nav-item">
+            <%=link_to "Home", root_path, class: "links #{is_active('home')}" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Products", products_path, class: "links #{is_active('products')}"  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", about_path, class: "links #{is_active('about')}" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Contact", contact_path, class: "links #{is_active('contact')}" %>
+          </li>
+        </div>
         <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <%# Devise login form %>
+          <div>
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="order-lg-2" style='display: flex; list-style: none;'>
+                <% if user_signed_in? %>
+                  <li><%= current_user.email %></li>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                <% else %>
+                  <div class="login">
+                    <div class="form-inputs" style="display: flex; margin-bottom: 0px !important;">
+                      <%= f.input :email,
+                        placeholder: 'Email', 
+                        label:false,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email", class: "login-input" } %>
+                      <%= f.input :password,
+                        placeholder: 'Password',
+                        label:false,
+                        required: false,
+                        input_html: { autocomplete: "current-password", class: "login-input" } %>
+                    </div>
+                    <div class="form-actions">
+                      <%= f.button :submit, "Log in" %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
-</div>
+</nav>

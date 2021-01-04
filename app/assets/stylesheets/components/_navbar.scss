@@ -1,12 +1,206 @@
-.navbar-lewagon {
-  justify-content: space-between;
+// Burger Menu
+
+.burger {
+  position: fixed;
+  top:0; 
+  left: 100;
+}
+
+.line {
+  height: 2px;
+  width: 20px;
+}
+
+#line-top {
+  margin-bottom: 5px;
+  background-color: black;
+  transition: .1s ease-in-out;
+}
+
+.line-top-active {
+  transform: rotate(45deg);
+  transform-origin: top left;
+  transition: .1s ease-in-out;
+}
+
+#line-middle {
+  background-color: black;
+  transition: .1s ease-in-out;
+}
+
+.line-middle-active {
+  opacity: 0;
+  transition: .1s ease-in-out;
+  transform: translateX(-16px);
+  background-color: rgba(0,0,0,0);
+}
+
+#line-bottom {
+  margin-top: 5px;
+  background-color: black;
+  transition: .1s ease-in-out;
+}
+
+.line-bottom-active {
+  transform: translateX(-1px) rotate(-45deg);
+  transition: .1s ease-in-out;
+  transform-origin: top left;
+}
+
+// General Navbar
+
+.navbar {
+  border-bottom: 1.5px solid $my-gold;
+  position: fixed;
+  transition: top 1s;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
   background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.container-nav {
+  width: 100%;
+  display: contents;
+  border-bottom: 2px solid $my-gold;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+// Login section
+
+.login-input {
+  width: 8vh;
+  background: #F5F7FC;
+  border-radius: 5px;
+  margin-right: 1vh;
+  color: black;
+}
+
+.form-actions .btn {
+  background: $my-gold;
+  color: white !important;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 0px;
+}
+
+.login {
+  align-items: center;
+  display: flex;
+}
+
+
+.navbar-expand-lg .navbar-nav {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+// Links
+
+.nav-links {
+  display: contents;
+}
+
+.nav-item {
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 4vh;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item a {
+  font-size: 15px;
+  margin: 10px 0px;
+  text-decoration: none;
+  color: black;
+  
+}
+
+.nav-item a:after {    
+  background: none repeat scroll 0 0 transparent;
+  content: "";
+  display: block;
+  height: 2px;
+  background: $my-gold;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.nav-item a:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+
+.navbar-toggler {
+  border: none;
+  color: $my-gold;
+  position: fixed;
+  top: 1.8vh;
+  left: 88vw;
+  outline: none !important;
+}
+
+a.links.active {
+  border-bottom: 2px solid $my-gold;
+  color: $my-gold;
+  &:not(.disable):hover {
+    width: 100%; 
+    left: 0; 
+  }
+}
+
+// .active:hover {
+//   pointer-events: none;
+// }
+
+
+#navbarSupportedContent {
+  width: 75vw !important;
+}
+
+.collapse .navbar-collapse {
+  width: 100%;
+
+}
+
+.order-lg-2 {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-lg-2 li {
+  color: black;
+  font-size: 0.9rem;
+  margin-right: 2vh;
+}
+
+@media (max-width: 576px) {
+  .container-nav {
+    margin: 0px;
+  }
+}
+
+@media (max-width: 990px) {
+  .navbar-expand-lg .navbar-nav {
+    height: 82vh;
+  }
+  .navbar-logo {
+    width: 100px;
+  }
+  .order-lg-2 li {
+    display: none;
+  }
+
+}
+
+@media (min-width: 1100px) {
+  .navbar-header {
+    margin: 0px;
+  }
 }

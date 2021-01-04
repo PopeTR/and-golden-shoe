@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { menuButton } from "../components/Navbar";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,4 +32,9 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  menuButton();
 });
+// Support component names relative to this directory:
+var componentRequireContext = require.context("components", true);
+var ReactRailsUJS = require("react_ujs");
+ReactRailsUJS.useContext(componentRequireContext);
