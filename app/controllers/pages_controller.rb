@@ -5,9 +5,6 @@ class PagesController < ApplicationController
     @video = ActionController::Base.helpers.asset_path('shoes.mov')
   end
 
-  def products
-  end
-
   def contact
   end
 
