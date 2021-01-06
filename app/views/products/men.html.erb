@@ -9,7 +9,7 @@
             <div class="shoecard">
                 
                 <% if product.images.attached? %> 
-                    <div class="shoecard-image" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(product.images[0]) %>)'>
+                    <div class="shoecard-image" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= url_for(product.images[0]) %>)'>
                         <img src= <%= url_for(product.images[0]) %> alt="main_image">
                     </div>
                 <% end %> 
