@@ -61,24 +61,44 @@
     color: white;
 }
 
-@media (max-width: 400px) {
+// Ipad
+@media (max-width: 768px) {
     .shoecards-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         grid-gap: 0vh;
     }
 
     .shoecard-image img {
         z-index: 0;
     }
+    .shoecard {
+        width: 45vw;
+        height: 45vw;
+    }
+
+    .shoecard-image img {
+        display: none;
+    }
+
+    .shoecard-title {
+        bottom: 95%;
+    }
+}
+
+// Mobile
+@media (max-width: 400px) {
+    .shoecards-container {
+        grid-template-columns: 1fr;
+        grid-gap: 0vh;
+    }
 
     .shoecard {
         width:90vw;
         height:90vw;
     }
+
     .shoecard-title {
         bottom: 75%;
     }
-    .shoecard-image img {
-        display: none;
-    }
 }
+
