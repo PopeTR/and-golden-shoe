@@ -1,0 +1,84 @@
+.shoes-container {
+    margin-top: 13vh;
+}
+
+.shoecards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2vh;
+}
+
+.shoecard {
+    width: 50vh;
+    height: 50vh;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(49, 49, 49, 0.2);
+    margin: 2vh;
+    border-radius: 11px;
+}
+
+.shoecard-image img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 150%;
+    opacity: 1;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+    z-index: 1;
+}
+
+.shoecard-image img:hover {
+    opacity: 0;
+    text-decoration: none;
+}
+
+.shoecard-image {
+    width: 50vh;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.shoecard-title {
+    position: relative;
+    bottom: 50%;
+    text-align: center;
+}
+
+.shoecard-title p {
+    opacity: 1;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.shoecards-container a {
+    text-decoration: none;
+    color: white;
+}
+
+@media (max-width: 400px) {
+    .shoecards-container {
+        grid-template-columns: 1fr;
+        grid-gap: 0vh;
+    }
+
+    .shoecard-image img {
+        z-index: 0;
+    }
+
+    .shoecard {
+        width:90vw;
+        height:90vw;
+    }
+    .shoecard-title {
+        bottom: 75%;
+    }
+    .shoecard-image img {
+        display: none;
+    }
+}

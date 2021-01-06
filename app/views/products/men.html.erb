@@ -1,9 +1,23 @@
-<h1>I am some content</h1>
-
-
-<% @male_products.each do |product| %>
-    <% if product.images.attached? %>
-        <%= image_tag product.images[0], style: "height: 300px; width: 400px; display: block" %>
+<div class="shoes-container">
+    <div class="filters-container">
+    </div>
+    <div class="shoecards-container">
+    <%# Shoe Card %>
+    
+    <% @male_products.each do |product| %> 
+        <%= link_to product_path(product.id), :action => 'go' do %>
+            <div class="shoecard">
+                
+                <% if product.images.attached? %> 
+                    <div class="shoecard-image" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= rails_blob_url(product.images[0]) %>)'>
+                        <%= image_tag product.images[0] %> 
+                    </div>
+                <% end %> 
+                <div class="shoecard-title">
+                    <p class="shoecard-name"><%= product.name %></p>
+                </div>
+            </div>
+        <% end %> 
     <% end %>
-    <p><%= product.name %></p>
-<% end %>
+    </div>
+</div>
