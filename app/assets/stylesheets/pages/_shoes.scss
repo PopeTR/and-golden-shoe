@@ -1,5 +1,6 @@
 .shoes-container {
     margin-top: 13vh;
+    display: flex;
 }
 
 .shoecards-container {
@@ -9,8 +10,8 @@
 }
 
 .shoecard {
-    width: 50vh;
-    height: 50vh;
+    width: 30vh;
+    height: 30vh;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(49, 49, 49, 0.2);
     margin: 2vh;
@@ -35,8 +36,8 @@
 }
 
 .shoecard-image {
-    width: 50vh;
-    height: 50vh;
+    width: 30vh;
+    height: 30vh;
     background-size: cover;
     background-position: center;
 }

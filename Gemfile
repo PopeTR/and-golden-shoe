@@ -35,7 +35,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'open-uri','~> 0.1.0'
 gem 'cloudinary', '~> 1.16.0'
-
+gem 'pg_search'
+gem 'acts-as-taggable-on', '~> 6.0'
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails', groups: [:development, :test]

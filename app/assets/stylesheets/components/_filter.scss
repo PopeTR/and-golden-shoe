@@ -1,0 +1,95 @@
+.search-input {
+    width: 23vw;
+    padding: 0.9vh;
+    margin-left: 3vh;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: $my-grey;
+    border: none;
+    padding-left: 2vh;
+}   
+
+.filter-icon button:focus{
+    outline: none
+}
+
+aside {
+   width: 33vh;
+   height: 33vh; 
+   position: fixed;
+   transition: .3s; 
+   left: -33vh;
+   top: 0;
+   transition-timing-function: cubic-bezier(0.9,0,1,1);
+}
+
+.close {
+    left:0;
+    transition:.3s;
+    transition-timing-function: cubic-bezier(0.9,0,1,1);
+}
+
+#filter-icon { 
+    border: none; 
+    background: none; 
+    position: absolute; 
+    right: -32px;
+    top: 90px;
+    font-size: 30px; 
+    display: inline-block; 
+    cursor: pointer;
+    width: 3vh;
+    color: $my-gold;
+    margin-bottom: 1rem;
+}
+
+.search-shoes {
+    display: flex;
+}
+
+.search-button {
+    background: $my-gold;
+    color: white;
+    border-radius: 5px;
+    padding: 0.8vh;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-header p {
+    text-transform: uppercase;
+    letter-spacing: 4.5px;
+    font-weight: 600;
+    color: $my-gold;
+}
+
+.filters-container {
+    width: 33vh;
+    background: $my-grey;
+    padding: 3vh;
+    line-height: 4.5vh;
+    margin-top: -3vh;
+}
+
+// #filter-icon {
+//     width: 3vh;
+//     color: $my-gold;
+//     margin-bottom: 1rem;
+// }
+
+.form-group.find_brands {
+    margin-top: 2vh;
+}
+
+.find-categories {
+    margin-top: 2vh;
+}
+
+.col-form-label {
+    font-weight: 600;
+    color: $my-gold;
+}

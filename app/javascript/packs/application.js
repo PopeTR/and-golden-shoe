@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { menuButton } from "../components/Navbar";
+import { filterButton } from "../components/Filter";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -33,6 +34,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   menuButton();
+  filterButton();
 });
 // Support component names relative to this directory:
 var componentRequireContext = require.context("components", true);
