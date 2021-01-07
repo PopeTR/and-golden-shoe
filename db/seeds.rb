@@ -1,3 +1,5 @@
+require "open-uri"
+
 User.destroy_all
 Brand.destroy_all
 Product.destroy_all
@@ -35,15 +37,19 @@ space_hippie = Product.create(name: "Space Hippie", brand_id: nike.id, product_t
 challenger = Product.create(name: "Challenger", brand_id: nike.id, product_type_id: men.id, category_id: casual.id)
 runner = Product.create(name: "Runner", brand_id: nike.id, product_type_id: men.id, category_id: running.id)
 
-air_max.images.attach(io: File.open('app/assets/images/shoes/airmax/airmax.jpg'), filename: 'airmax.jpg', content_type: "image/jpg")
-air_max.images.attach(io: File.open('app/assets/images/shoes/airmax/airmax2.jpg'), filename: 'airmax2.jpg', content_type: "image/jpg")
-pegasus.images.attach(io: File.open('app/assets/images/shoes/pegasus/pegasus.jpg'), filename: 'pegasus.jpg', content_type: "image/jpg")
-react.images.attach(io: File.open('app/assets/images/shoes/react/react.jpg'), filename: 'react.jpg', content_type: "image/jpg")
-drifter.images.attach(io: File.open('app/assets/images/shoes/drifter/drifter.jpg'), filename: 'drifter.jpg', content_type: "image/jpg")
-space_hippie.images.attach(io: File.open('app/assets/images/shoes/space_hippie/space_hippie.jpg'), filename: 'space_hippie.jpg', content_type: "image/jpg")
-challenger.images.attach(io: File.open('app/assets/images/shoes/challenger/challenger.jpg'), filename: 'challenger.jpg', content_type: "image/jpg")
-runner.images.attach(io: File.open('app/assets/images/shoes/runner/runner.jpg'), filename: 'runner.jpg', content_type: "image/jpg")
-
+# Product Images
+file = URI.open('https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')
+air_max.images.attach(io: file, filename: 'airmaxactual.jpg', content_type: 'image/jpg')
+air_max.save
+file = URI.open('https://images.unsplash.com/photo-1514989771522-458c9b6c035a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')
+air_max.images.attach(io: file, filename: 'airmaxactual2.jpg', content_type: 'image/jpg')
+air_max.save
+# pegasus.images.attach(io: file, filename: 'pegasus.jpg', content_type: 'image/jpg')
+# react.images.attach(io: file, filename: 'react.jpg', content_type: 'image/jpg')
+# drifter.images.attach(io: file, filename: 'drifter.jpg', content_type: 'image/jpg')
+# space_hippie.images.attach(io: file, filename: 'space_hippie.jpg', content_type: 'image/jpg')
+# challenger.images.attach(io: file, filename: 'challenger.jpg', content_type: 'image/jpg')
+# runner.images.attach(io: file, filename: 'runner.jpg', content_type: 'image/jpg')
 
 # Colours
 # Nike Air Max Colours
