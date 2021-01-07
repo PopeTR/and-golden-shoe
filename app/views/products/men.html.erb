@@ -10,7 +10,7 @@
                 
                 <% if product.images.attached? %> 
                     <div class="shoecard-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path product.images[0].key %>')">
-                        <%= cl_image_tag product.images[0].key %>
+                        <%= cl_image_tag product.images[1].key %>
                     </div>
                 <% end %> 
                 <div class="shoecard-title">
