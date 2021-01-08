@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 
 class ProductsController < ApplicationController
     skip_before_action :authenticate_user!, only: [ :men, :women, :sale, :products, :index, :show ]
