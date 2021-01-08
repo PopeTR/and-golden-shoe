@@ -184,8 +184,8 @@ a.links.active {
   margin-right: 2vh;
 }
 
-@media (max-width: 576px) {
-  .container-nav {
+@media (min-width: 1100px) {
+  .navbar-header {
     margin: 0px;
   }
 }
@@ -200,11 +200,17 @@ a.links.active {
   .order-lg-2 li {
     display: none;
   }
+  .navbar-toggler {
+    left: 90vw;
+  }
 
 }
 
-@media (min-width: 1100px) {
-  .navbar-header {
+@media (max-width: 576px) {
+  .container-nav {
     margin: 0px;
   }
+  .navbar-toggler {
+    left: 87vw;
+  } 
 }

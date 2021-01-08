@@ -9,9 +9,13 @@
     grid-gap: 2vh;
 }
 
+.shoecards-maincontainer {
+    margin-left: 7vh;
+}
+
 .shoecard {
-    width: 30vh;
-    height: 30vh;
+    width: 28vw;
+    height: 28vw;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(49, 49, 49, 0.2);
     margin: 2vh;
@@ -36,8 +40,8 @@
 }
 
 .shoecard-image {
-    width: 30vh;
-    height: 30vh;
+    width: 28vw;
+    height: 28vw;
     background-size: cover;
     background-position: center;
 }
@@ -62,27 +66,56 @@
     color: white;
 }
 
-// Ipad
-@media (max-width: 768px) {
+// Search bar
+
+.search-shoes {
+    display: flex;
+}
+
+.search-input {
+    width: 75vw;
+    padding: 0.9vh;
+    margin-left: 2vh;
+    border-radius: 5px;
+    background: $my-grey;
+    border: none;
+    padding-left: 2vh;
+} 
+
+// Ipad Pro
+@media (max-width: 1024px) {
     .shoecards-container {
         grid-template-columns: 1fr 1fr;
         grid-gap: 0vh;
     }
+    .shoes-container {
+        margin-top: 13vh;
+    }
 
-    .shoecard-image img {
-        z-index: 0;
-    }
     .shoecard {
-        width: 45vw;
-        height: 45vw;
+        width: 40vw;
+        height: 40vw;
     }
+
+    .shoecard-image {
+        width: 40vw;
+        height: 40vw;
+    }
+    
+}
+
+// Ipad
+@media (max-width: 768px) {
 
     .shoecard-image img {
         display: none;
     }
+    .shoes-container {
+        margin-top: 11vh;
+    }
 
     .shoecard-title {
-        bottom: 95%;
+        bottom: 55%;
     }
 }
 
@@ -93,13 +126,30 @@
         grid-gap: 0vh;
     }
 
+    .shoes-container {
+        margin-top: 11vh;
+    }
+
+    .shoecards-maincontainer {
+        margin-left: 3vh;
+    }
+
     .shoecard {
-        width:90vw;
-        height:90vw;
+        width:82vw;
+        height:82vw;
+    }
+
+    .shoecard-image {
+        width: 82vw;
+        height: 82vw;
     }
 
     .shoecard-title {
-        bottom: 75%;
+        bottom: 54%;
+    }
+
+    .search-input {
+        width: 63vw;
     }
 }
 
