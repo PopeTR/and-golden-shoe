@@ -45,14 +45,19 @@ class ProductsController < ApplicationController
     def show
         @shoe = Product.find(params[:id])
         @product_type = ProductType.find(id = @shoe.product_type_id)
-        # binding.pry
-        # @colours = Colour.where(product_id: @shoe.id)
+        @colours = Colour.where(product_id: @shoe.id)
+        @sizes = Size.all
+        @colour_names = []
+        @colours.each do |colour|
+            @colour_names.push(colour.name)
+        end
+
         @colour = Colour.find(params[:id])
-        @shoe_sizes = Size.where(@colour.id = params[:colour])
-        # @sizes = Size.where(colour_id: @colour.id)
-        # @image = rails_blob_path(@shoe.images)
-        # binding.pry
+        
+        if params[:colour].present?
+            @shoe_sizes = Size.where(@colour.id = params[:colour])    
+        else
+            @shoe_sizes = Size.all
+        end
     end
 end
-
-# OR products.description ILIKE :query \

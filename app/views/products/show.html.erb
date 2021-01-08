@@ -8,17 +8,50 @@
     </div>
     <div class="show-info-container">
         <div class="show-info-header">
-            <h2><%= @product_type.name.capitalize %>'s Shoe</h2>
-            <p><%= @shoe.name %></p>
+            <p><%= @product_type.name.capitalize %>'s Shoe</p>
+            <h2><%= @shoe.name %></h2>
             <p><%= @shoe.price %></p>
             <p><%= @shoe.description %></p>
         </div>
         <div class="show-info-colours">
             <h2>Colour</h2>
-            
+            <% if @colours.empty? %>
+                <p>Sorry we are currently out of stock. Please come back soon</p>
+            <% else %>
+                <div class="grid colour-grid">
+                    <% @colours.each do |colour| %>
+                        
+                        <%= form_tag product_path, method: :get do %>
+                        <%= su_tag "#{colour.name}",
+                            class: "square colour-square #{colour.name}", 
+                            style: "background: #{colour.name};",
+                            name: :colour 
+                        %>
+                        <% end %>
+                    <% end %>
+                </div>
+            <% end %>
         </div>
         <div class="show-info-sizes">
-        
+            <% if @colours.empty? %>
+                <p>:-(</p>
+            <% else %>
+                <h2>Size</h2>
+                <div class="grid size-grid">
+                    <%= @shoe_sizes.each do |size| %>
+                        <%= form_tag product_path, method: :post do %>
+                        <%= submit_tag "#{size.content}",
+                            class: "square size-square #{size.content}",
+                            name: :size 
+                        %>
+                        <% end %>
+                    <% end %>
+                </div>
+                <button class="btn search-button basket">Add to Basket</button>
+            <% end %>
         </div>
+
     </div>
 </div>
+
+

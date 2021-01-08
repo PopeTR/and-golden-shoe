@@ -1,1 +1,11 @@
-<%= react_component("Video", {video: @video, user: current_user})%>
+<div class="homepage-container">
+    <%= video_tag "shoes.mov", playsinline: :playsinline, autoplay: :autoplay, loop: :loop, muted: :muted, class: "home-video"%>
+
+    <div class="header-home">
+        <div class="title-men-women">
+            <%= link_to "Men", men_path %>
+            <hr id="home-line">
+            <%= link_to "Women", women_path %>
+        </div>
+    </div>
+</div>
