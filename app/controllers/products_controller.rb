@@ -1,7 +1,7 @@
 require 'pry'
 
 class ProductsController < ApplicationController
-    skip_before_action :authenticate_user!, only: [ :men, :women, :sale, :products, :index ]
+    skip_before_action :authenticate_user!, only: [ :men, :women, :sale, :products, :index, :show ]
    
     def index
         @shoes = Product.all
@@ -44,7 +44,11 @@ class ProductsController < ApplicationController
 
     def show
         @shoe = Product.find(params[:id])
-        @colours = Colour.where(product_id: @shoe.id)
+        @product_type = ProductType.find(id = @shoe.product_type_id)
+        # binding.pry
+        # @colours = Colour.where(product_id: @shoe.id)
+        @colour = Colour.find(params[:id])
+        @shoe_sizes = Size.where(@colour.id = params[:colour])
         # @sizes = Size.where(colour_id: @colour.id)
         # @image = rails_blob_path(@shoe.images)
         # binding.pry

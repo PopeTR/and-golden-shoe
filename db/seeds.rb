@@ -29,13 +29,13 @@ women = ProductType.create(name: 'women')
 
 # Products
 # Mens Products for Nike
-air_max = Product.create(name: "Air Max", brand_id: nike.id, product_type_id: men.id, category_id: casual.id)
-pegasus = Product.create(name: "Pegasus", brand_id: nike.id, product_type_id: men.id, category_id: casual.id)
-react = Product.create(name: "React", brand_id: nike.id, product_type_id: men.id, category_id: casual.id)
-drifter = Product.create(name: "Drifter", brand_id: nike.id, product_type_id: men.id, category_id: casual.id)
-space_hippie = Product.create(name: "Space Hippie", brand_id: nike.id, product_type_id: men.id, category_id: casual.id)
-challenger = Product.create(name: "Challenger", brand_id: nike.id, product_type_id: men.id, category_id: casual.id)
-runner = Product.create(name: "Runner", brand_id: nike.id, product_type_id: men.id, category_id: running.id)
+air_max = Product.create(name: "Air Max", price: "€129.95", brand_id: nike.id, product_type_id: men.id, category_id: casual.id, description: "Nothing as fly, nothing as comfortable, nothing as proven—the Nike Air Max 3 stays true to its roots, honouring the iconic Air Max 90 with the Waffle sole, stitched overlays and classic TPU accents. Fresh colours give a modern look while Max Air cushioning adds comfort to your journey.")
+pegasus = Product.create(name: "Pegasus", price: "€119.95", brand_id: nike.id, product_type_id: men.id, category_id: casual.id, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.")
+react = Product.create(name: "React", price: "€109.95", brand_id: nike.id, product_type_id: men.id, category_id: casual.id, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.")
+drifter = Product.create(name: "Drifter", price: "€99.95", brand_id: nike.id, product_type_id: men.id, category_id: casual.id, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.")
+space_hippie = Product.create(name: "Space Hippie", price: "€149.95", brand_id: nike.id, product_type_id: men.id, category_id: casual.id, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.")
+challenger = Product.create(name: "Challenger", price: "€159.95", brand_id: nike.id, product_type_id: men.id, category_id: casual.id, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.")
+runner = Product.create(name: "Runner", price: "€169.95", brand_id: nike.id, product_type_id: men.id, category_id: running.id, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.")
 
 # Product Images Air Max
 
@@ -44,6 +44,18 @@ air_max.images.attach(io: file, filename: 'airmaxactual.jpg', content_type: 'ima
 air_max.save
 file = URI.open('https://images.unsplash.com/photo-1514989771522-458c9b6c035a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')
 air_max.images.attach(io: file, filename: 'airmaxactual2.jpg', content_type: 'image/jpg')
+air_max.save
+file = URI.open('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/77c5668e-e194-4351-aedf-20f2bc9fc17e/air-max-3-shoe-v4bHMm.jpg')
+air_max.images.attach(io: file, filename: 'airmaxactual3.jpg', content_type: 'image/jpg')
+air_max.save
+file = URI.open('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/4afe3853-660f-419b-a512-0d98967a948d/air-max-3-shoe-v4bHMm.jpg')
+air_max.images.attach(io: file, filename: 'airmaxactual4.jpg', content_type: 'image/jpg')
+air_max.save
+file = URI.open('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/0c6a9bc3-6905-45dc-8e54-7d6589e74ad5/air-max-3-shoe-v4bHMm.jpg')
+air_max.images.attach(io: file, filename: 'airmaxactual5.jpg', content_type: 'image/jpg')
+air_max.save
+file = URI.open('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/6c88a444-abe6-48a2-978b-996b3b63822f/air-max-3-shoe-v4bHMm.jpg')
+air_max.images.attach(io: file, filename: 'airmaxactual6.jpg', content_type: 'image/jpg')
 air_max.save
 
 # Images Pegasus

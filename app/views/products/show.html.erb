@@ -1,0 +1,24 @@
+<div class="show-container">
+    <div class="show-images-container">
+        <% @shoe.images.each do |image| %>
+            <div class="show-image-container">
+                <%= cl_image_tag image.key %>
+            </div>
+        <% end %>
+    </div>
+    <div class="show-info-container">
+        <div class="show-info-header">
+            <h2><%= @product_type.name.capitalize %>'s Shoe</h2>
+            <p><%= @shoe.name %></p>
+            <p><%= @shoe.price %></p>
+            <p><%= @shoe.description %></p>
+        </div>
+        <div class="show-info-colours">
+            <h2>Colour</h2>
+            
+        </div>
+        <div class="show-info-sizes">
+        
+        </div>
+    </div>
+</div>
