@@ -22,7 +22,7 @@
                     <% @colours.each do |colour| %>
                         
                         <%= form_tag product_path, method: :get do %>
-                        <%= su_tag "#{colour.name}",
+                        <%= submit_tag "#{colour.name}",
                             class: "square colour-square #{colour.name}", 
                             style: "background: #{colour.name};",
                             name: :colour 

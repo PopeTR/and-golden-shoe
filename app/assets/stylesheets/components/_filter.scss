@@ -13,7 +13,7 @@ aside {
     height: 100vh; 
     position: fixed;
     transition: .3s; 
-    left: -26vh;
+    left: -33vh;
     top: 0;
     transition-timing-function: cubic-bezier(0.9,0,1,1);
     background: white;
@@ -53,9 +53,16 @@ button {
     font-size: 30px; 
     display: inline-block; 
     cursor: pointer;
-    width: 3vh;
+    width: 4vh;
     color: $my-gold;
     margin-bottom: 1rem;
+    margin-right: -7.4vh;
+    background: white;
+    padding: 1vh 1vh;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid $my-gold;
+    border-left: 0px;
 }
 
 // Find and reset buttons
