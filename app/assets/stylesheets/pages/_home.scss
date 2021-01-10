@@ -26,11 +26,13 @@ h2 {
     text-decoration: none;
     color: $my-gold;
     display: flex;
+    align-items: center;
 }
 
 .title-men-women a {
     color: $my-gold;
     text-decoration: none;
+    margin-left: -40px;
 }
 
 .title-men-women a:hover {
@@ -39,6 +41,8 @@ h2 {
 }
 
 #home-line {
-    width: 115px;
-    border: 1px solid grey;
+    width: 257px;
+    border: 1px solid white;
+    transform: rotate(130deg);
+
 }

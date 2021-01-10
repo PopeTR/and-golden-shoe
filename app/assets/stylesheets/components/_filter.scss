@@ -49,17 +49,12 @@ button {
 
 #filter-icon { 
     cursor: pointer;
-    height: 80%;
-    color: white;
-    border-radius: 5px;
-    background: #cdac81;
-    border: 1px solid #cdac81;
-    padding: 5px 5px;
+    height: 46%;
+    color: $my-gold;
 }
 
 #filter-icon:hover {
-    background: $my-grey;
-    color: $my-gold;
+    color: black;
     transition: ease-in .5s;
     border: none;
 }
