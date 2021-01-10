@@ -9,11 +9,11 @@
 }
 
 aside {
-    width: 33vh;
+    width: 50vw;
     height: 100vh; 
     position: fixed;
     transition: .3s; 
-    left: -33vh;
+    left: -50vw;
     top: 0;
     transition-timing-function: cubic-bezier(0.9,0,1,1);
     background: white;
@@ -48,22 +48,31 @@ button {
 }
 
 #filter-icon { 
-    border: none; 
-    background: none; 
-    font-size: 30px; 
-    display: inline-block; 
     cursor: pointer;
-    width: 4vh;
-    color: $my-gold;
-    margin-bottom: 1rem;
-    margin-right: -7.4vh;
-    background: white;
-    padding: 1vh 1vh;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 1px solid $my-gold;
-    border-left: 0px;
+    height: 80%;
+    color: white;
+    border-radius: 5px;
+    background: #cdac81;
+    border: 1px solid #cdac81;
+    padding: 5px 5px;
 }
+
+#filter-icon:hover {
+    background: $my-grey;
+    color: $my-gold;
+    transition: ease-in .5s;
+    border: none;
+}
+
+
+
+.filter-toggle {
+    height: 100%;
+}
+
+// .filter-icon {
+//     height: 80%;
+// }
 
 // Find and reset buttons
 
@@ -147,6 +156,8 @@ button {
 @media (max-width: 767px) {
     aside {
         height: 105vh;
+        width: 90vw;
+        left: -90vw;
     }
     
 }
@@ -155,8 +166,6 @@ button {
 
 @media (max-width: 400px) {
     aside {
-        width: 100vw;
-        left: -57.5vh;
         border-right: none;
         opacity: 0.8;
     }
@@ -166,9 +175,5 @@ button {
 
     .filter-toggle {
         padding: 0px;
-    }
-
-    #filter-icon {
-        width: 2vh;
     }
 }

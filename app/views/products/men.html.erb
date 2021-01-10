@@ -6,11 +6,6 @@
                     <%# <ul class="navbar-nav mr-auto order-lg-1"> %>
                     <div class="filter-header">
                         <p>Filters</p>
-                        <div class="filter-icon">
-                            <button class="filter-toggle" type="button">
-                                <svg id="filter-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="filter" class="svg-inline--fa fa-filter fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"></path></svg>
-                            </button>
-                        </div>
                     </div>
                     <div class="nav-links" id="nav-links">
                         <%= simple_form_for :find, url: men_path, method: "GET" do |f| %>
@@ -28,14 +23,21 @@
     <%# Shoe Card %>
     <div class="shoecards-maincontainer">
         <div class="search-shoes">
-            <%= form_tag men_path, method: :get do %>
-                <%= text_field_tag :query,
-                    params[:query],
-                    class: "search-input",
-                    placeholder: "Search by category or name "
-                %>
-                <%= submit_tag "Search", class: "btn search-button" %>
-            <% end %>
+            <div class="search-form">
+                <%= form_tag men_path, method: :get do %>
+                    <%= text_field_tag :query,
+                        params[:query],
+                        class: "search-input",
+                        placeholder: "Search by category or name "
+                    %>
+                    <%= submit_tag "Search", class: "btn search-button" %>
+                <% end %>
+            </div>
+            <div class="filter-icon">
+                <button class="filter-toggle" type="button">
+                    <svg id="filter-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="filter" class="svg-inline--fa fa-filter fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"></path></svg>
+                </button>
+            </div>
         </div>
         <div class="shoecards-container">
             <% @male_products.each do |product| %> 
