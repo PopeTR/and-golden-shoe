@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   get "/men", to: "products#men", as: :men
   get "/women", to: "products#women", as: :women
   get "/sale", to: "products#sale", as: :sale
+  
+  namespace :api do
+    namespace :v1 do
+      get "products/:id", to: "products#show", as: :getshow
+      post "products/:id", to: "products#show", as: :postshow
+    end
+  end
 end

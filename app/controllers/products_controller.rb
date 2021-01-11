@@ -1,8 +1,8 @@
-# require 'pry'
+require 'pry'
 
 class ProductsController < ApplicationController
     skip_before_action :authenticate_user!, only: [ :men, :women, :sale, :products, :index, :show ]
-   
+    skip_before_action :verify_authenticity_token
     def index
         @shoes = Product.all
     end
@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
     end
 
     def show
+        
         @shoe = Product.find(params[:id])
         @product_type = ProductType.find(id = @shoe.product_type_id)
         @colours = Colour.where(product_id: @shoe.id)
@@ -52,12 +53,21 @@ class ProductsController < ApplicationController
             @colour_names.push(colour.name)
         end
 
-        @colour = Colour.find(params[:id])
-        
+        # @colour = Colour.find(params[:id])
+        @colour = params[:colour]
         if params[:colour].present?
-            @shoe_sizes = Size.where(@colour.id = params[:colour])    
+           
+            # @filter = params[:colour].flatten.reject(&:blank?)
+            @shoe_sizes = Size.where(colour_id: params[:colour])
+            render :partial => "size", :layout => false
+            # binding.pry   
+            # @shoe_sizes = Size.search_by_colour(params[:colour])   
         else
-            @shoe_sizes = Size.all
+            @shoe_sizes = []
+        end
+        respond_to do |format|
+            format.html
+            format.json {render json: @shoe_sizes}
         end
     end
 end
