@@ -3,6 +3,7 @@ class Size < ApplicationRecord
   has_many :orders
   acts_as_taggable_on :colours
 
+  # PG Search Functionality
   include PgSearch::Model
   pg_search_scope :search_by_colour,
       against: [:content],

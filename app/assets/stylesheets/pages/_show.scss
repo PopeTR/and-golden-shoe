@@ -2,7 +2,7 @@
 
 .show-container {
     display: flex;
-    height: 100vh;
+    height: 134vh;
     margin-top: 57.5px;
     padding: 2vh;
     border-radius: 5px;
@@ -154,8 +154,8 @@ label {
 @media (max-width: 1000px) {
     .show-container {
         flex-direction: column;
-        height: 129vh;
     }
+    
     .show-images-container {
         display: flex;
         overflow-x: scroll;
@@ -181,6 +181,10 @@ label {
 }
 
 @media (max-width: 400px) {
+    .show-container {
+        height: 153vh;
+    }
+
     .colour-square {
         height: 9vh;
         padding: 1.5vh;

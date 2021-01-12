@@ -1,5 +1,3 @@
-require 'pry'
-
 class ProductsController < ApplicationController
     skip_before_action :authenticate_user!, only: [ :men, :women, :sale, :products, :index, :show ]
     skip_before_action :verify_authenticity_token
@@ -21,7 +19,8 @@ class ProductsController < ApplicationController
         Brand.all.each do |brand| 
             @brands.push(brand.name)
         end
-        
+
+        # Active Search Query for search bar
         if params[:search].present?
             sql_query = " \
                 products.name ILIKE :search \
@@ -33,6 +32,7 @@ class ProductsController < ApplicationController
             @male_products = Product.all
         end
 
+        # PG Search Query for Filters
         if params[:find].present?
             @filter = params[:find][:categories].concat(params[:find][:brands]).flatten.reject(&:blank?)
             @male_products = @filter.empty? ? Product.all : Product.search_by_product_category_brand(@filter)
@@ -41,11 +41,9 @@ class ProductsController < ApplicationController
 
     def women
         @female_products = Product.where(product_type_id: 2).with_attached_images
-        # ProductType.where(name: "women").products
     end
 
     def show
-        
         @shoe = Product.find(params[:id])
         @product_type = ProductType.find(id = @shoe.product_type_id)
         @colours = Colour.where(product_id: @shoe.id)
@@ -55,18 +53,14 @@ class ProductsController < ApplicationController
             @colour_names.push(colour.name)
         end
 
-        # @colour = Colour.find(params[:id])
-        @colour = params[:colour]
+        # Logic for the colour search
         if params[:colour].present?
-           
-            # @filter = params[:colour].flatten.reject(&:blank?)
             @shoe_sizes = Size.where(colour_id: params[:colour])
-            render :partial => "size", :layout => false
-            # binding.pry   
-            # @shoe_sizes = Size.search_by_colour(params[:colour])   
+            render :partial => "size", :layout => false 
         else
             @shoe_sizes = []
         end
+        # For Ajax to run search
         respond_to do |format|
             format.html
             format.json {render json: @shoe_sizes}

@@ -1,0 +1,49 @@
+
+.footer-distributed {
+    background-color: $my-grey;
+    width: 100%;
+    text-align: center;
+    padding: 3vh;
+    border-top: solid 0.5vh $my-gold;
+}
+
+.icon-container {
+    width: 12vh;
+    margin: auto;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+#circle-icon {
+    width: 5vh;
+    fill: $my-gold;
+    position: absolute;
+}
+
+#twitter {
+    z-index: 1;
+    width: 2vh;
+}
+
+#linkedin {
+    z-index: 1;
+    width: 2vh;
+}
+
+.home-icon { 
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+    cursor: pointer
+}
+
+#privacy-policy-link {
+    font-weight: 600;
+}

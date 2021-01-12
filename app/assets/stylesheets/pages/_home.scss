@@ -1,4 +1,4 @@
-// Specific CSS for your home-page
+// Specific CSS for home-page
 body {
     background-color: $my-grey;
 }
@@ -27,7 +27,7 @@ h2 {
     color: $my-gold;
     display: flex;
     align-items: center;
-    width: 90vw;
+    
 }
 
 .title-men-women a {
@@ -51,5 +51,8 @@ h2 {
 @media (max-width: 400px) {
     .title-men-women a {
         margin-left: 0px;
+    }
+    .title-men-women {
+        width: 90vw;
     }
 }

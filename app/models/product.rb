@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   acts_as_taggable_on :brands
   acts_as_taggable_on :product_types
 
+  # PG Search functionality
   include PgSearch::Model
   pg_search_scope :search_by_product_category_brand,
       against: [:name, :description],
