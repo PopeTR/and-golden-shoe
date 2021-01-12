@@ -78,7 +78,6 @@
             success: function(response){
                 const form = (response) => {
                     let array = []
-                    console.log(response)
                     if (response.length === 0) {
                         return ("<p>No Sizes Available in this shoe</p>")
                     } else { response.map((size) => {
@@ -114,14 +113,12 @@
     const showBasket = () => {
         const sizeSelection = document.querySelectorAll('.size-square')
         const basket = document.getElementById('basket-btn');
-        console.log(sizeSelection)
         sizeSelection.forEach(item => {
             item.addEventListener('click', event => {
             basket.classList.add('basket');  
             })
         
         })
-        console.log(basket)
     }
 </script>
 
