@@ -15,6 +15,8 @@
     margin: 2vh 0vh;
 }
 
+
+
 .show-image-container {
     width: 28vw;
     height: 28vw;
@@ -65,7 +67,13 @@ label {
     grid-gap: 1vh;
 }
 
+
+
 // Colour form
+
+.show-info-colours {
+    margin-top: 3vh;
+}
 
 .colour-grid {
     display: grid;
@@ -87,6 +95,10 @@ label {
 }
 
 // Size form
+
+.show-info-sizes {
+    margin-top: 3vh;
+}
 
 .size-square {
     border: 1px solid white;
@@ -142,5 +154,38 @@ label {
 @media (max-width: 1000px) {
     .show-container {
         flex-direction: column;
+        height: 129vh;
+    }
+    .show-images-container {
+        display: flex;
+        overflow-x: scroll;
+        height: 50vh;
+        scroll-snap-type: x mandatory;
+        scroll-snap-points-x: repeat(100vw);
+        scroll-snap-type: mandatory;
+    }
+    .show-image-container {
+        width: 95vw;
+        height: 40vh;
+        border: none;
+        box-shadow: none;
+        margin: 0vh;
+        border-radius: 0px;
+    }
+
+    .image-home {
+        scroll-snap-align: center;
+        width: 100vw;
+
+    }
+}
+
+@media (max-width: 400px) {
+    .colour-square {
+        height: 9vh;
+        padding: 1.5vh;
+    } 
+    label {
+        font-size: 12px;
     }
 }

@@ -1,9 +1,11 @@
 <div class="show-container">
     <div class="show-images-container">
         <% @shoe.images.each do |image| %>
-            <div class="show-image-container">
-                <%= cl_image_tag image.key %>
-            </div>
+            <section class="image-home">
+                <div class="show-image-container">
+                    <%= cl_image_tag image.key %>
+                </div>
+            </section>
         <% end %>
     </div>
     <div class="show-info-container">
@@ -38,7 +40,7 @@
             <% if @colours.empty? %>
                 <p>:-(</p>
             <% else %>
-                <h2>Choose Your Size</h2>
+                <h2>Available Sizes</h2>
                 <div class="size-grid" id="sizes">
                     
                 </div>

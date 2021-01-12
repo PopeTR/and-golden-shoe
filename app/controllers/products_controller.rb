@@ -22,18 +22,20 @@ class ProductsController < ApplicationController
             @brands.push(brand.name)
         end
         
-        if params[:query].present?
-            @male_products = Product.search_by_product_category_brand(params[:query])
-            # binding.pry
+        if params[:search].present?
+            sql_query = " \
+                products.name ILIKE :search \
+                OR products.description ILIKE :search \
+                OR brands.name ILIKE :search \
+            "
+            @male_products = Product.joins(:brand).where(sql_query, search: "%#{params[:search]}%")
         else
-            @male_products = Product.where(product_type_id: 1).with_attached_images
+            @male_products = Product.all
         end
 
         if params[:find].present?
             @filter = params[:find][:categories].concat(params[:find][:brands]).flatten.reject(&:blank?)
             @male_products = @filter.empty? ? Product.all : Product.search_by_product_category_brand(@filter)
-        else
-            @male_products = Product.where(product_type_id: 1).with_attached_images
         end
     end
 

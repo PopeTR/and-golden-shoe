@@ -27,6 +27,7 @@ h2 {
     color: $my-gold;
     display: flex;
     align-items: center;
+    width: 90vw;
 }
 
 .title-men-women a {
@@ -45,4 +46,10 @@ h2 {
     border: 1px solid white;
     transform: rotate(130deg);
 
+}
+
+@media (max-width: 400px) {
+    .title-men-women a {
+        margin-left: 0px;
+    }
 }
