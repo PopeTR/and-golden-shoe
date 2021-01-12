@@ -1,9 +1,0 @@
-<h1>I am some content</h1>
-
-
-<% @products.each do |product| %>
-    <% if product.images.attached? %>
-        <%= image_tag product.images[0], style: "height: 300px; width: 400px; display: block" %>
-    <% end %>
-    <p><%= product.name %></p>
-<% end %>
