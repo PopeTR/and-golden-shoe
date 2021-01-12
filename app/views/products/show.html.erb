@@ -14,19 +14,19 @@
             <p><%= @shoe.description %></p>
         </div>
         <div class="show-info-colours">
-            <h2>Colour</h2>
+            <h2>Choose Your Colour</h2>
             <% if @colours.empty? %>
                 <p>Sorry we are currently out of stock. Please come back soon</p>
             <% else %>
                 <form action="" method="post" class="colour-form" data-remote="true">
                     <div class="colour-grid">
-                        <%= @colours.each do |colour| %>
+                        <% @colours.each do |colour| %>
                             <div class="colour-box">
-                                <fieldset id="<%=colour.id%>" class="radio-buttons" style="background: <%=colour.name%>">
-                                    <input type="radio" name="colours" value="<%=colour.name%>">
-                                        <div class="square colour-square <%=colour.name %>" style="background: '<%=colour.name%>'">
-                                            <label for="size_selection"><%= colour.name %></label>
-                                        </div>
+                                <fieldset id="<%=colour.id%>" class="radio-buttons">
+                                    <div class="square colour-square <%=colour.name %>" style="background: <%=colour.name%>;">
+                                        <input type="radio" name="colours" value="<%=colour.name%>">
+                                        <label for="size_selection"><%= colour.name %></label>
+                                    </div>
                                 </fieldset>
                             </div>
                         <% end %>
@@ -38,98 +38,85 @@
             <% if @colours.empty? %>
                 <p>:-(</p>
             <% else %>
-                <h2>Size</h2>
+                <h2>Choose Your Size</h2>
                 <div class="size-grid" id="sizes">
                     
                 </div>
-                <button class="btn search-button basket">Add to Basket</button>
+                <button id="basket-btn" class="btn basket-button">Add to Basket</button>
             <% end %>
         </div>
 
     </div>
 </div>
-
 <script type="text/javascript">
     const checkBoxes = document.querySelectorAll(".radio-buttons");
-    const form = document.querySelector('form');
-    const colour = (id) => {
-        $.ajax({
-            url : "/api/v1/products/<%=@shoe.id%>", //by rails convention doing a post simply to '/messages' should be handled by create action
-            method : "post",
-            data : { colour: id },
-            dataType : "json", //this might be wrong?
-            success: function(response){
-                
-                const form = (response) => {
-                    console.log(response)
-                    let array = []
-                    response.map((size) => {
-                        array.push(`<p>${size.content}</p>`)
-                
-                    }) 
-                    return (array.join(''))
-                    
-                }
-
-                // markup.push(html);
-                // html = markup.join("");
-                
-                    document.getElementById('sizes').innerHTML = form(response);
-            
-                
-                
-                
-                // const show = document.querySelector('#sizes');
-                // show.innerHTML = '<p>' + response.map((size) => {
-                //     // console.log(size.content)
-                //     return 
-                //         '<p>' + size.content + '</p>'; 
-                //         }).join('')  + '</p>';
-	            // return '<li>' + wizard + '</li>';
-                // }).join('') + '</ul>';
-                // response.map((size) => {
-        //             <form class="simple_form grid" id="new_size" novalidate="novalidate" action="" accept-charset="UTF-8" method="post">
-        //                 <div class="radio size-info">
-        //                     <fieldset class="form-group radio_buttons size_selection">
-        //                         <input type="hidden" name="answer" data-remote="true" value="">
-        //                         <div class="square size-square">
-        //                             <input class="form-check-input size-form-checks radio_buttons optional" type="radio" value="" name="Answer" id="size_selection">
-        //                             <label class="btn collection_radio_buttons" for="size_selection">
-        //                                 {size.content}
-        //                             </label>
-        //                         </div>
-        //                     </fieldset>
-        //                 </div>
-            
-        //     <input type="submit" name="commit" value="Order Now" class="order-button">
-        // </form>
-                // })
-        //do something,maybe notify user successfully posted their message
-            },
-            error: function(error){
-            console.log(error);
-        }
-        });
+    // Function to identify what colour was clicked 
+    const replaceSizes = (innerHTML) => {
+        const sizes = document.getElementById('sizes');
+        sizes.innerHTML = innerHTML;
     }
 
-    
-    function replaceSizes (innerHTML) {
-    const sizes = document.getElementById('sizes');
-    sizes.innerHTML = innerHTML;
-    console.log(innerHTML)
-    }
-    
+    // Listens for change and then takes the colour id.
     for (const check of checkBoxes) {
         check.addEventListener( 'change', function() {
             colour(check.id)
-            replaceSizes("<%= j render 'size', sizes: @shoe_sizes %>");
         })
     }
 
+    // Ajax request to find shoe sizes that exist
+    const colour = (id) => {
+        $.ajax({
+            url : "/api/v1/products/<%=@shoe.id%>", 
+            method : "post",
+            data : { colour: id },
+            dataType : "json",
+            success: function(response){
+                const form = (response) => {
+                    let array = []
+                    console.log(response)
+                    if (response.length === 0) {
+                        return ("<p>No Sizes Available in this shoe</p>")
+                    } else { response.map((size) => {
+                            array.push(`
+                                <form class="simple_form grid" id="new_size" novalidate="novalidate" action="" accept-charset="UTF-8" method="post">
+                                    <div class="radio size-info">
+                                        <fieldset class="form-group radio_buttons size_selection">
+                                            <input type="hidden" name="answer" data-remote="true" value="">
+                                            <div class="square size-square">
+                                                <input class="form-check-input size-form-checks radio_buttons optional" type="radio" value="" name="Answer" id="size_selection">
+                                                    <label class="btn collection_radio_buttons" for="size_selection">
+                                                ${size.content}
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                </div>`)
+                            }) 
+                                return (array.join(''))
+                                
+                                }
+                }
+                    document.getElementById('sizes').innerHTML = form(response);
+                    showBasket();
+                    
+            },
+            error: function(error){
+            console.log(error);
+            }
+        });
+    }
 
-    
-    
-    
+    // Function to show basket
+    const showBasket = () => {
+        const sizeSelection = document.querySelectorAll('.size-square')
+        const basket = document.getElementById('basket-btn');
+        console.log(sizeSelection)
+        sizeSelection.forEach(item => {
+            item.addEventListener('click', event => {
+            basket.classList.add('basket');  
+            })
+        
+        })
+        console.log(basket)
+    }
 </script>
-
 

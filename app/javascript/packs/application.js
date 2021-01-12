@@ -26,6 +26,7 @@ require("channels")
 import "bootstrap";
 import { menuButton } from "../components/Navbar";
 import { filterButton } from "../components/Filter";
+import { replaceSizes } from "../components/replaceSizes";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -35,6 +36,8 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   menuButton();
   filterButton();
+  replaceSizes();
+  // showBasket();
 });
 // Support component names relative to this directory:
 var componentRequireContext = require.context("components", true);
